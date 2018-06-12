@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -38,16 +39,18 @@ public class Order {
         //go to order field
         driver.findElement(By.linkText("Order")).click();
         //generate random quantity 1-100
-        int j = (int)Math.floor(Math.random()*101);
-        if(j != 0)
-        driver.findElement(By.name("ctl00$MainContent$fmwOrder$txtQuantity")).sendKeys(""+j);
+        Random r1 = new Random();
+        int  randomQuantity = 1 + r1.nextInt(100);
+       
+        driver.findElement(By.name("ctl00$MainContent$fmwOrder$txtQuantity")).sendKeys(""+ randomQuantity);
         
         
         //get random name
         String randomName ="";
-        int k = (int)Math.floor( Math.random () * 101);
+        Random r2 = new Random();
+        int randomNameIndex = r2.nextInt(99);
 		for(int i=0; i<names.size(); i++) {
-			if(k==i)
+			if(i==randomNameIndex)
 				randomName = names.get(i);
 		
 		}
