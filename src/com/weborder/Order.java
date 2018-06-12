@@ -48,7 +48,7 @@ public class Order {
         //get random name
         String randomName ="";
         Random r2 = new Random();
-        int randomNameIndex = r2.nextInt(99);
+        int randomNameIndex = r2.nextInt(100);
 		for(int i=0; i<names.size(); i++) {
 			if(i==randomNameIndex)
 				randomName = names.get(i);
@@ -60,14 +60,15 @@ public class Order {
         driver.findElement(By.name("ctl00$MainContent$fmwOrder$TextBox3")).sendKeys("Pittsburgh");
         driver.findElement(By.name("ctl00$MainContent$fmwOrder$TextBox4")).sendKeys("PA");
         //set random zip code
+        Random r3 = new Random();
         driver.findElement(By.name("ctl00$MainContent$fmwOrder$TextBox5")).sendKeys(""+(int)Math.floor(Math.random()*100000));
          /**get a random card type using random numbers from 0 to 2
           * where 0 - VISA
           * 1 - master card
           * 2 - American Express
           */
-        
-      int cardIndex =(int)Math.floor(Math.random()*3) ;
+        Random r4 = new Random();
+      int cardIndex = r4.nextInt(3) ;
       driver.findElement(By.id("ctl00_MainContent_fmwOrder_cardList_" + cardIndex)).click(); ;
        
        switch (cardIndex) {
